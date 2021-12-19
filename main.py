@@ -17,27 +17,27 @@ standard_to = StandardScaler()
 def predict():
     Fuel_Type_Diesel=0
     if request.method == 'POST':
-        crim = int(request.form['crim'])
+        crim = float(request.form['crim'])
         zn=float(request.form['zn'])
         indus=int(request.form['indus'])
         
-        chas=int(request.form['chas'])
-        nox=int(request.form['nox'])
-        rm=int(request.form['rm'])
-        age=int(request.form['age'])
-        dis=int(request.form['dis'])
-        rad=int(request.form['rad'])
-        tax=int(request.form['tax'])
-        ptratio=int(request.form['ptratio'])
-        black=int(request.form['black'])
-        lstat=int(request.form['lstat'])
+        chas=float(request.form['chas'])
+        nox=float(request.form['nox'])
+        rm=float(request.form['rm'])
+        age=float(request.form['age'])
+        dis=float(request.form['dis'])
+        rad=float(request.form['rad'])
+        tax=float(request.form['tax'])
+        ptratio=float(request.form['ptratio'])
+        black=float(request.form['black'])
+        lstat=float(request.form['lstat'])
 
 
 
 
 
         
-        prediction=model.predict([[crim,zn,indus,chas,nox,rm,age,dis,rad,tax,ptratio,black,lstat]])
+        prediction=model.predict([crim,zn,indus,chas,nox,rm,age,dis,rad,tax,ptratio,black,lstat])
         output=round(prediction[0],2)
         if output<0:
             return render_template('index.html',prediction_texts="Sorry you cannot sell this car")
