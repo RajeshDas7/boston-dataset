@@ -37,7 +37,7 @@ def predict():
 
 
         
-        prediction=model.predict([crim,zn,indus,chas,nox,rm,age,dis,rad,tax,ptratio,black,lstat])
+        prediction=model.predict([[crim,zn,indus,chas,nox,rm,age,dis,rad,tax,ptratio,black,lstat]])
         output=round(prediction[0],2)
         if output<0:
             return render_template('index.html',prediction_texts="Sorry you cannot sell this car")
